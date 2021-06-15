@@ -123,6 +123,11 @@ class _HomeState extends State<Home> {
                         var formatdata = formkey.currentState;
                         if (formatdata.validate()) {
                           formatdata.save();
+                          /**
+                           ******
+                            Important LISTEN: FALSE  insid onpress or ontab ..
+                           ******
+                           */
                           Provider.of<MyClass>(context, listen: false)
                               .chV(v1: value1, v2: value2);
                           Navigator.of(context).pop();

@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
       ),
       ////////////////
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 80,bottom: 80),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -31,6 +32,7 @@ class _HomeState extends State<Home> {
                 height: 30,
               ),
               Value2(),
+              
             ],
           ),
         ),

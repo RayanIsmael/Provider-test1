@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_test1/exampl2/home2.dart';
 import 'package:provider_test1/home.dart';
 import 'package:provider_test1/myclass/myclass.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: Home2(),
     );
   }
 }

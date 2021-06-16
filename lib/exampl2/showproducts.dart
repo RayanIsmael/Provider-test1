@@ -51,21 +51,22 @@ class _ProductsState extends State<Products> {
                           isThreeLine: true,
                           leading: Text("ID:${products[index]['id']}",
                               style: TextStyle(color: Colors.white)),
-                          title: Text("${products[index]['title']}${index + 1}",
+                          title: Text("${products[index]['title']}",
                               style: TextStyle(color: Colors.white)),
-                          subtitle: Text(
-                              "${index + 1}:${products[index]['body']}",
+                          subtitle: Text("${products[index]['body']}",
                               style: TextStyle(color: Colors.white)),
 
                           ///
                           trailing: IconButton(
                             onPressed: () {
-                              products.removeAt(index);
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          super.widget));
+                              //products.removeAt(index);
+                              // Navigator.pushReplacement(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (BuildContext context) =>
+                              //             super.widget));
+                              Provider.of<MyClass2>(context, listen: false)
+                                  .removeproduct(products[index]['id']);
                               //////
                               // products.removeAt(index);
                               // Navigator.of(context)

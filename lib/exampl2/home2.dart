@@ -12,40 +12,41 @@ class Home2 extends StatefulWidget {
 }
 
 class _Home2State extends State<Home2> {
+  bool check = false;
   List products = [
     {
       "id": 1,
-      "title": "product",
+      "title": "product1",
       "body":
           " Shopping Cart Part Shopping Cart Part Shopping Cart Part Shopping Cart Part"
     },
     {
       "id": 2,
-      "title": "product",
+      "title": "product2",
       "body":
           " Shopping Cart Part Shopping Cart Part Shopping Cart Part Shopping Cart Part"
     },
     {
       "id": 3,
-      "title": "product",
+      "title": "product3",
       "body":
           " Shopping Cart Part Shopping Cart Part Shopping Cart Part Shopping Cart Part"
     },
     {
       "id": 4,
-      "title": "product",
+      "title": "product4",
       "body":
           " Shopping Cart Part Shopping Cart Part Shopping Cart Part Shopping Cart Part"
     },
     {
       "id": 5,
-      "title": "product",
+      "title": "product5",
       "body":
           " Shopping Cart Part Shopping Cart Part Shopping Cart Part Shopping Cart Part"
     },
     {
       "id": 6,
-      "title": "product",
+      "title": "product6",
       "body":
           " Shopping Cart Part Shopping Cart Part Shopping Cart Part Shopping Cart Part"
     },
@@ -53,10 +54,9 @@ class _Home2State extends State<Home2> {
 
   @override
   Widget build(BuildContext context) {
-    var myprovider = Provider.of<MyClass2>(context, listen: false);
+    var myprovider = Provider.of<MyClass2>(context, listen: true);
     return Scaffold(
         appBar: AppBar(
-          
           title: Text('Home Page 2'),
           actions: [
             Badge(
@@ -67,7 +67,7 @@ class _Home2State extends State<Home2> {
                     Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => Products()));
                   },
-                  icon: Icon(Icons.shopping_bag_outlined)),
+                  icon: Icon(Icons.shopping_cart_outlined)),
               position: BadgePosition(top: 0, end: 0),
               animationDuration: Duration(milliseconds: 500),
               animationType: BadgeAnimationType.slide,
@@ -92,19 +92,28 @@ class _Home2State extends State<Home2> {
                     isThreeLine: true,
                     leading: Text("ID:${products[index]['id']}",
                         style: TextStyle(color: Colors.white)),
-                    title: Text("${products[index]['title']}${index + 1}",
+                    title: Text("${products[index]['title']}",
                         style: TextStyle(color: Colors.white)),
-                    subtitle: Text("${index + 1}:${products[index]['body']}",
+                    subtitle: Text("${products[index]['body']}",
                         style: TextStyle(color: Colors.white)),
 
                     ///
-                    trailing: IconButton(
-                      onPressed: () {
-                        myprovider.addToList(products[index]);
-                      },
-                      icon: Icon(Icons.shopping_bag_outlined),
-                      color: Colors.white,
-                    )
+                    trailing: (myprovider.checkProduct(products[index]['id']))
+                        ? IconButton(
+                            onPressed: () {
+                              Provider.of<MyClass2>(context, listen: false)
+                                  .removeproduct(products[index]['id']);
+                            },
+                            icon: Icon(Icons.delete),
+                            color: Colors.red,
+                          )
+                        : IconButton(
+                            onPressed: () {
+                              myprovider.addToList(products[index]);
+                            },
+                            icon: Icon(Icons.shopping_bag_outlined),
+                            color: Colors.white,
+                          )
 
                     ///
                     ),
